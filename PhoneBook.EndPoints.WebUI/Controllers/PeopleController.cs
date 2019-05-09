@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Domain.Contracts.People;
 using PhoneBook.Domain.Contracts.Tags;
@@ -13,6 +14,7 @@ using PhoneBook.EndPoints.WebUI.Models.People;
 
 namespace PhoneBook.EndPoints.WebUI.Controllers
 {
+    [Authorize]
     public class PeopleController : Controller
     {
         private readonly ITagRepository tagRepository;

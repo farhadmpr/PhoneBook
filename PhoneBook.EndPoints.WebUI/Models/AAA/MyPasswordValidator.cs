@@ -12,14 +12,14 @@ namespace PhoneBook.EndPoints.WebUI.Models.AAA
         {
             List<IdentityError> errors = new List<IdentityError>();
 
-            if (!user.Email.EndsWith("@nikamooz.com"))
-            {
-                errors.Add(new IdentityError
-                {
-                    Code = "InvalidEmail",
-                    Description = "Use nikamooz email for Registration"
-                });
-            }
+            //if (!user.Email.EndsWith("@nikamooz.com"))
+            //{
+            //    errors.Add(new IdentityError
+            //    {
+            //        Code = "InvalidEmail",
+            //        Description = "Use nikamooz email for Registration"
+            //    });
+            //}
 
             return Task.FromResult(errors.Any() ?
                     IdentityResult.Failed(errors.ToArray()) :

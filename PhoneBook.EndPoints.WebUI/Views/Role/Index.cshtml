@@ -1,0 +1,15 @@
+﻿@model  List<MyIdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table>
+    <tr><th>Role Name</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>
+

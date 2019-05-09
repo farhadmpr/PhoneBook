@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PhoneBook.EndPoints.WebUI.Models.AAA;
@@ -10,6 +11,7 @@ using PhoneBook.EndPoints.WebUI.Models.AAA;
 
 namespace PhoneBook.EndPoints.WebUI.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> userManager;
@@ -54,9 +56,9 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
             }
             return View(model);
         }
-        public IActionResult Update(string id)
+        public IActionResult Update(int id)
         {
-            var user = userManager.FindByIdAsync(id).Result;
+            var user = userManager.FindByIdAsync(id.ToString()).Result;
             if (user != null)
             {
                 UpdateUserViewModel model = new UpdateUserViewModel
@@ -68,9 +70,9 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
             return NotFound();
         }
         [HttpPut]
-        public IActionResult Update(string id, UpdateUserViewModel updateUserViewModel)
+        public IActionResult Update(int id, UpdateUserViewModel updateUserViewModel)
         {
-            var user = userManager.FindByIdAsync(id).Result;
+            var user = userManager.FindByIdAsync(id.ToString()).Result;
             if (user != null)
             {
                 user.Email = updateUserViewModel.Email;
@@ -110,5 +112,18 @@ namespace PhoneBook.EndPoints.WebUI.Controllers
             }
             return View();
         }
+
+        public IActionResult AddToRole(string id, string roleName)
+        {
+            var user = userManager.FindByIdAsync(id).Result;
+            if (user != null)
+            {
+               var result = userManager.AddToRoleAsync(user, roleName).Result;
+                
+            }
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
