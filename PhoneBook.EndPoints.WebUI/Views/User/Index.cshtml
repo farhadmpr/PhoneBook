@@ -1,0 +1,28 @@
+﻿@model List<AppUser>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    @if (Model?.Any() == true)
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-action="Update" asp-controller="User" asp-route-id="@item.Id">Edit</a>
+                    |
+                    <a asp-action="Delete" asp-controller="User" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr><td colspan="2">Users Not Found</td></tr>
+    }
+</table>

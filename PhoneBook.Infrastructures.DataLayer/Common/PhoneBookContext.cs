@@ -5,9 +5,6 @@ using PhoneBook.Domain.Core.Tags;
 using PhoneBook.Infrastructures.DataLayer.People;
 using PhoneBook.Infrastructures.DataLayer.Phones;
 using PhoneBook.Infrastructures.DataLayer.Tags;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PhoneBook.Infrastructures.DataLayer.Common
 {

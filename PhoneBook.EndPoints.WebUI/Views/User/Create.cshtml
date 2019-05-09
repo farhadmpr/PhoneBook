@@ -1,0 +1,41 @@
+﻿@model CreateUserViewModel
+@{
+
+}
+@section head
+{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+}
+<form asp-action="Create" asp-controller="User" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+
+        <label asp-for="UserName"></label>
+        <input type="text" asp-for="UserName" class="form-control" maxlength="50" />
+        <span asp-validation-for="UserName"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input type="text" asp-for="Email" class="form-control" maxlength="100" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input type="text" asp-for="Password" class="form-control" maxlength="50" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Save" />
+</form>
+
+
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+    </script>
+}
